@@ -1,0 +1,78 @@
+.dashboard * {
+    color: white;
+    text-align: left;
+}
+
+.dashboard {
+    // background-image: url('../../assets/images/dashboard-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    &__center {
+        background-color: rgb(49, 49, 49);
+        min-height: 75vh;
+        width: 85vw;
+        margin-top: 10rem;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    }
+    &__row {
+        height: 300px;
+        margin: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-top {
+            &--left {
+                width: 30%;
+                height: 100%;
+                background-color: rgb(58, 58, 58);
+                margin-right: 2rem;
+                padding: 1rem;
+            }
+            &--right {
+                width: 70%;
+                height: 100%;
+                background-color: rgb(58, 58, 58);
+                padding: 1.5rem;
+            }
+        }
+        &-player {
+            display: flex;
+            
+            * {
+                line-height: 1.2rem;
+            }
+            &--left {
+                background-color: rgb(43, 43, 43);
+                height: 100%;
+                width: 45%;
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            &--right {
+                background-color: rgb(43, 43, 43);
+                width: 62%;
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+                margin-left: 1rem;
+                
+            }
+            &-name {
+                margin-bottom: 0.75rem;
+            }
+        }
+        &-timer {
+            background-color: rgb(43, 43, 43);
+            height: 55%;
+            margin-bottom: 1rem;
+        }
+    }
+}
