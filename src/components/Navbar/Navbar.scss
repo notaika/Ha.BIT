@@ -1,0 +1,27 @@
+@use '../../styles/typography';
+@use '../../styles/variables';
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    &__logo {
+        height: 40px;
+        margin: 10px 2rem;
+    }
+
+    &__links {
+        padding: 20px 2rem;
+        &-item {
+            font-family: typography.$font-pixel;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 2rem;
+            
+        }
+    }
+}

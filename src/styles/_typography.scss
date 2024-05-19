@@ -1,0 +1,28 @@
+$font-pixel: 'Pixeloid';
+$font-reg: 'Montserrat';
+
+@font-face {
+    font-family: $font-pixel;
+    src: url('/src/assets/fonts/PixeloidSans-mLxMm.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: $font-pixel;
+    src: url('/src/assets/fonts/PixeloidSansBold-PKnYd.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: $font-reg;
+    src: url('/src/assets//fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: 400;
+}
+@font-face {
+    font-family: $font-reg;
+    src: url('/src/assets//fonts/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+}
+@font-face {
+    font-family: $font-reg;
+    src: url('/src/assets//fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: 700;
+}
