@@ -28,6 +28,7 @@ Special Considerations
 
 # Implementation
 ## Tech Stack
+Main Stack:
 - HTML
 - CSS (Sass)
 - Javascript
@@ -59,19 +60,66 @@ Nice to haves:
 - Login Page
 
 ## Mockups
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
+![Landing Page](src/assets/screenshots/landing-page.jpeg)
+![Dashboard](src/assets/screenshots/dashboard.jpeg)
+
+Nice to haves:
+![Login Page](src/assets/screenshots/log-in.jpeg)
+![Signup Page](src/assets/screenshots/sign-up.jpeg)
 
 ## Data
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.
+![Data](src/assets/screenshots/data.jpeg)
+
 
 ## Endpoints
-![alt text](image.png)
+![Ha.BIT API Endpoints](./src/assets/screenshots/endpoints.png)
 
 ## Auth
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
+I will try to implement authentication/authorization as a nice to have with JWT.
 
 ## Roadmap
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+What has been done so far:
+- Landing Page
+- Timer functionality
+- Making all of the databases and seeding them with mock data
+
+To-Do (Starting June 1st, 2024)
+
+June 1st:
+- To-do list and design
+- Game animations
+
+June 2nd:
+- Shop implementation
+- Inventory implementation
+
+June 3rd: 
+- Integration of shop and inventory functionality together
+- Along with this, the change of animations depending on the current selected character
+
+June 4th:
+- Habit Tracker that resets at 12 AM (really want this done, though it's a nice have - would really think of it as a neat feature to have with the app)
+
+June 5th:
+- Front-End components for the About, Contact and Support
+- Make sure all one-to-many (to-do list, user to logs, users to inventory) and many-to-one (inventory to shop) implementations are done 
+
+June 6th:
+- Logs component
+
+June 7th: Break
+
+The rest of the days till due date:
+- Make sure the app is functioning with little to no bugs at all and then try to implement some nice-to-haves.
 
 ## Nice-to-haves
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+- More databases to prepare for scalability (if I ever decide to expand in the future)
+- Authentication/Authorization
+- A Habit Tracker along with the To-Do list
+- A level/progress bar with rewards
+- When buying new weapons/characters, the amount of coins earned will increase after finishing the timers (beating the levels)
+- Achievements with badges for further motivation
+- I really want to learn and implement real-time group social sharing - have it under a "Guild" section to fit in with the team so the user and their friends/team can focus together. Kind of like partying up and defeating the boss.
+- Advanced analytics that provides users with insights into their productivity and usage patterns.
+- Notifications to send reminders and update users about their tasks and rewards
+- More advanced game functionality and animations
