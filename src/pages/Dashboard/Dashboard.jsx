@@ -7,17 +7,18 @@ import SideQuests from "../../components/SideQuests/SideQuests";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState([]);
   const [levels, setLevels] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [isCounting, setIsCounting] = useState(false);
   const [initialTime, setInitialTime] = useState(0);
   const { id } = useParams();
+  let reputation = (user.reputation / 60)
 
   const getUser = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/users/`);
-      setUser(response.data[0].username);
+      setUser(response.data[0]);
     } catch (error) {
       console.log(`ERROR: Could not get user`, error);
     }
@@ -48,9 +49,10 @@ export default function Dashboard() {
   };
 
   const handleTimerFinish = () => {
-    // add coins to player wallet from here;
-    // add to reputation
+    reputation += selectedLevel.time;
   };
+
+
 
   return (
     <main className="dashboard">
@@ -62,10 +64,10 @@ export default function Dashboard() {
           <div className="dashboard__row-top--right">
             <div className="dashboard__row-player">
               <div className="dashboard__row-player--left">
-                <p className="dashboard__row-player-name">Welcome, {user}</p>
+                <p className="dashboard__row-player-name">Welcome, {user.username}</p>
                 <p className="dashboard__row-player-status">CURRENTLY: {selectedLevel ? 'Deployed' : 'Idle'}</p>
                 <p className="dashboard__row-player-location">LOCATION: {selectedLevel ? selectedLevel.name : 'At the tavern'}</p>
-                <p className="dashboard__row-player-reputation">REPUTATION: 128 hours</p>
+                <p className="dashboard__row-player-reputation">REPUTATION: {reputation} hours</p>
               </div>
               <div className="dashboard__row-player--right">
                 <p className="dashboard__row-player-level">Select an expedition:</p>

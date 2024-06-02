@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import quillIcon from "../../assets/images/quill.png";
+import scrollIcon from "../../assets/images/scroll.png"
 import "./SideQuests.scss";
 
 export default function SideQuests() {
@@ -44,20 +45,47 @@ export default function SideQuests() {
     setNewTask(e.target.value)
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     addTask();
+  }
+
+  const deleteTask = async (id) => {
+    try {
+        const response = await axios.delete(`${import.meta.env.VITE_LOCALHOST}/api/tasks/${id}`);
+        setTasks(tasks.filter(task => task.id !== id));
+    } catch (error) {
+        console.log(`ERROR: Could not delete task`, error)
+    }
+  }
+
+  const handleDeleteTask = (id) => {
+    deleteTask(id);
+  }
+
+  const toggleComplete = (id) => {
+    setTasks(tasks.map(task => {
+        if (task.id === id) {
+            return {...task, isCompleted: !task.isCompleted};
+        }
+        return task;
+    }))
   }
 
   return (
     <div className="tasks">
-      <h1 className="tasks__title">Side Quests</h1>
+      <h1 className="tasks__title">Side Quests <img src={scrollIcon} alt="" className="tasks__title-icon" /></h1>
       <form onSubmit={handleSubmit} className="tasks__checklist">
         {tasks.map((task) => (
-          <div className="task__item" key={task.id}>
-            <input type="checkbox" className="tasks__task" id={task.id} />
-            <label htmlFor={task.id} className="tasks__task-label">
-              {task.task}
-            </label>
+          <div className="tasks__item" key={task.id}>
+            <div className="tasks__item-content">
+                <input type="checkbox" className="tasks__task" id={task.id} onChange={() => toggleComplete(task.id)}/>
+                <label htmlFor={task.id} className={`tasks__task-label ${task.isCompleted ? 'tasks__task-label-completed' : ''}`}>
+                  {task.task}
+                </label>
+            </div>
+                <span className="tasks__item-x" onClick={() => handleDeleteTask(task.id)}>x</span>
+
           </div>
         ))}
 
