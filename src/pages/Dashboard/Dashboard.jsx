@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import LevelTimer from "../../components/LevelTimer/LevelTimer";
 import GameWindow from "../../components/GameWindow/GameWindow";
+import SideQuests from "../../components/SideQuests/SideQuests";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
@@ -94,10 +95,7 @@ export default function Dashboard() {
         <div className="dashboard__row">
           <div className="dashboard__row-quest--left">
             <div className="dashboard__row-quest--container">
-              <p className="dashboard__row-quest--title">Side Quests</p>
-              <ul className="dashboard__sidequest-list">
-                <li className="dashboard__sidequest-item">Item</li>
-              </ul>
+              <SideQuests />
             </div>
           </div>
           <div className="dashboard__row-quest--right">

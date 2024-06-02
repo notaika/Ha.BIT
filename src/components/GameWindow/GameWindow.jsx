@@ -8,19 +8,20 @@ export default function GameWindow() {
     const [avatar, setAvatar] = useState([]);
     const [monster, setMonster] = useState([]);
 
-    const getSprites = async () => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
-            console.log(response.data);
-            setSprites(response.data);
-            setAvatar(response.data[0]);
-            setMonster(monster = response.data[1]);
-        } catch (error) {
-            console.log(`ERROR: Could not fetch sprite`, error);
-        }
-    }
-    console.log(monster)
-    useEffect(() => {getSprites();}, [])
+    // const getSprites = async () => {
+    //     try {
+    //         const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
+    //         console.log(response.data);
+    //         setSprites(response.data);
+    //         setAvatar(response.data[0]);
+    //         setMonster(monster = response.data[1]);
+    //     } catch (error) {
+    //         console.log(`ERROR: Could not fetch sprite`, error);
+    //     }
+    // }
+
+    // console.log(monster)
+    // useEffect(() => {getSprites();}, [])
   return (
     <div className="game">
         <div className="game__sprites">
