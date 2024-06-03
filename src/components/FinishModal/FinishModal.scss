@@ -1,0 +1,39 @@
+.finish {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400;
+    background-color: rgb(72, 72, 72);
+    border: 2px solid #000;
+    box-shadow: 24;
+    padding: 2rem;
+
+    &__title {
+        color: #fcfcfc;
+    }
+    &__description {
+        color: #fcfcfc;
+        padding: 2rem 0;
+        font-size: 18px;
+    }
+    &__claim {
+        padding: 0.5rem 1rem;
+
+        &-icon {
+            height: 18px;
+            position: relative;
+            top: 2px;
+            margin-left: 4px;
+        }
+    }
+    &__coins {
+        height: 22px;
+        position: relative;
+        top: 4px;
+    }
+    &__rep {
+        @extend .finish__coins;
+        height: 24px; 
+    }
+}

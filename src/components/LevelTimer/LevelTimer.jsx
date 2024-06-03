@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './LevelTimer.scss';
 
-export default function LevelTimer({ initialTime, onFinish, setSelectedLevel, isCounting, setIsCounting }) {
+export default function LevelTimer({ initialTime, onFinish, isCounting, setIsCounting, cancelTimer }) {
   const [timeLeft, setTimeLeft] = useState(initialTime * 60);
 
   useEffect(() => {
@@ -24,10 +24,7 @@ export default function LevelTimer({ initialTime, onFinish, setSelectedLevel, is
   const startTimer = () => setIsCounting(true);
   const stopTimer = () => setIsCounting(false);
 
-  const cancelTimer = () => {
-    setIsCounting(false);
-    setSelectedLevel(null);
-  }
+ 
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);

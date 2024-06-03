@@ -4,6 +4,7 @@ import axios from "axios";
 import LevelTimer from "../../components/LevelTimer/LevelTimer";
 import GameWindow from "../../components/GameWindow/GameWindow";
 import SideQuests from "../../components/SideQuests/SideQuests";
+import FinishModal from "../../components/FinishModal/FinishModal";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
@@ -12,13 +13,14 @@ export default function Dashboard() {
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [isCounting, setIsCounting] = useState(false);
   const [initialTime, setInitialTime] = useState(0);
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
-  let reputation = (user.reputation / 60)
+  let reputation = (user.reputation / 60);
 
   const getUser = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/users/`);
-      setUser(response.data[0]);
+      const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/users/1`);
+      setUser(response.data);
     } catch (error) {
       console.log(`ERROR: Could not get user`, error);
     }
@@ -41,6 +43,11 @@ export default function Dashboard() {
     getLevels();
   }, []);
 
+  const cancelTimer = () => {
+    setIsCounting(false);
+    setSelectedLevel(null);
+  }
+
   const handleLevelSelect = (level) => {
     if (!isCounting) {
       setInitialTime(level.time);
@@ -48,18 +55,50 @@ export default function Dashboard() {
     }
   };
 
-  const handleTimerFinish = () => {
-    reputation += selectedLevel.time;
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    cancelTimer();
+    if (selectedLevel && selectedLevel.coins) {
+      addCoins(selectedLevel.coins);
+    };
+    if (selectedLevel && selectedLevel.time) {
+      addReputation(selectedLevel.time);
+    };
+      
   };
 
+  const handleTimerFinish = () => {
+    handleOpen();
+  };
+  
+  const addCoins = async (addedCoins) => {
+    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/1/coins`, {
+      id: 1,
+      addedCoins: addedCoins
+    })
+    setUser((currUser) => ({
+      ...currUser, coins: response.data.coins
+    }))
+  }
 
+  const addReputation = async (addedReputation) => {
+    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/1/reputation`, {
+      id: 1,
+      addedReputation: addedReputation
+    })
+    setUser((currUser) => ({
+      ...currUser, reputation: response.data.reputation
+    }))
+  }
 
   return (
     <main className="dashboard">
       <article className="dashboard__center">
         <div className="dashboard__row">
           <div className="dashboard__row-top--left">
-            <GameWindow />
+            <button onClick={handleOpen}>Open Finish Modal</button>
+            <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
           </div>
           <div className="dashboard__row-top--right">
             <div className="dashboard__row-player">
@@ -67,7 +106,7 @@ export default function Dashboard() {
                 <p className="dashboard__row-player-name">Welcome, {user.username}</p>
                 <p className="dashboard__row-player-status">CURRENTLY: {selectedLevel ? 'Deployed' : 'Idle'}</p>
                 <p className="dashboard__row-player-location">LOCATION: {selectedLevel ? selectedLevel.name : 'At the tavern'}</p>
-                <p className="dashboard__row-player-reputation">REPUTATION: {reputation} hours</p>
+                <p className="dashboard__row-player-reputation">REPUTATION: {(reputation).toFixed(2)} hours {user.coins}</p>
               </div>
               <div className="dashboard__row-player--right">
                 <p className="dashboard__row-player-level">Select an expedition:</p>
@@ -88,6 +127,7 @@ export default function Dashboard() {
                   onFinish={handleTimerFinish}
                   setSelectedLevel={setSelectedLevel}
                   setIsCounting={setIsCounting}
+                  cancelTimer={cancelTimer}
                 />
               )}
             </div>

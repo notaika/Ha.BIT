@@ -63,7 +63,7 @@ Nice to haves:
 ![Landing Page](src/assets/screenshots/landing-page.jpeg)
 ![Dashboard](src/assets/screenshots/dashboard.jpeg)
 
-Nice to haves:
+Nice to haves: <br>
 ![Login Page](src/assets/screenshots/log-in.jpeg)
 ![Signup Page](src/assets/screenshots/sign-up.jpeg)
 
