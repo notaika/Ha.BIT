@@ -5,23 +5,9 @@ import idleBg from '../../assets/images/tavern-bg.jpeg';
 import axios from 'axios';
 import './GameWindow.scss'
 
-export default function GameWindow({ isCounting, selectedLevel }) {
-    const [sprites, setSprites] = useState([]);
-    const [avatar, setAvatar] = useState([]);
-    const [monster, setMonster] = useState([]);
+export default function GameWindow({ isCounting, selectedLevel, avatar }) {
 
-    const getSprites = async () => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
-            const spriteData = response.data;
-            setAvatar(spriteData.player_sprites[2]);
-            setMonster(spriteData.monster_sprites[2]);
-        } catch (error) {
-            console.log(`ERROR: Could not fetch sprite`, error);
-        }
-    }
 
-    useEffect(() => {getSprites();}, [])
   return (
     <div className="game" style={{ backgroundImage: selectedLevel ? `url(${deployedBg})` : `url(${idleBg})`}}>
         <div className="game__sprites">

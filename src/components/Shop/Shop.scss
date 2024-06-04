@@ -1,0 +1,46 @@
+@use '../../styles/keyframes';
+
+.dashboard .shop {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__wallet {
+        padding: 0 8px;
+    }
+    &__container {
+        display: flex;
+    }
+    &__sprites {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+        z-index: 5;
+        margin: 0 auto;
+    }
+    &__buy {
+        width: 100px; /*single frame width*/
+        height: 100px; /* single frame height */
+        animation: keyframes.$idle 1s steps(6) infinite;
+        background-repeat: no-repeat;
+        transform: scale(2); /* scale img of sprite */
+        image-rendering: pixelated; /* make sure pixel resolution doesn't lose quality*/
+        position: relative;
+        top: 0px;
+        right: 0px;
+        z-index: 2;
+    }
+    &__title {
+        padding: 8px;
+    }
+    &__description {
+        margin: 0 auto;
+        position: relative;
+        bottom: 24px;
+
+        &-deny {
+            color: red;
+        }
+    }
+}
