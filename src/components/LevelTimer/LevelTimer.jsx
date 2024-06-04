@@ -24,8 +24,6 @@ export default function LevelTimer({ initialTime, onFinish, isCounting, setIsCou
   const startTimer = () => setIsCounting(true);
   const stopTimer = () => setIsCounting(false);
 
- 
-
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;

@@ -1,0 +1,30 @@
+@keyframes idle {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -600px 0;
+    }
+}
+
+@keyframes attack {
+    from {
+        background-position: 0 -200px;
+    }
+    to {
+        background-position: -600px -200px;
+    }
+}
+
+@keyframes attack-monster {
+    from {
+        background-position: 0px -200px;
+    }
+    to {
+        background-position: -600px -200px;
+    }
+}
+
+  $idle: idle;
+  $attack: attack;
+  $attack-monster: attack-monster;

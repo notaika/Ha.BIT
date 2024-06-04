@@ -1,20 +1,44 @@
+@use '../../styles/keyframes';
+
 .game {
+    background-position-y: -90px;
+    background-position-x: -140px;
+    background-size: 230%;
+    height: 100%;
+
     &__sprites {
         display: flex;
         position: relative;
 
-        &-user {
-            height: 350px;
-            position: absolute;
-            right: -25px;
-            top: 0px;
+        &-player {
+            width: 100px; /*single frame width*/
+            height: 100px; /* single frame height */
+            background-repeat: no-repeat;
+            animation: keyframes.$idle 1s steps(6) infinite;
+            transform: scale(4); /* scale img of sprite */
+            image-rendering: pixelated; /* make sure pixel resolution doesn't lose quality*/
+            position: relative;
+            top: 155px;
+            right: 0px;
+            z-index: 2;
+
+            &-attack {
+                @extend .game__sprites-player;
+                animation: keyframes.$attack 1s steps(6) infinite;
+            }
         }
         &-monster {
-            height: 500px;
-            position: absolute;
-            left: -120px;
-            top: -150px;
-            transform: rotateY(180deg);
+            @extend .game__sprites-player;
+            top: 145px;
+            left: 40px;
+            z-index: 1;
+            transform: scale(5) scaleX(-1);
+
+            &-attack {
+                @extend .game__sprites-monster;
+                animation: keyframes.$attack-monster 1s steps(6) infinite;
+            }
         }
+        
     }
 }

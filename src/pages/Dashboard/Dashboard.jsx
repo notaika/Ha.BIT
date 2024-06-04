@@ -97,8 +97,7 @@ export default function Dashboard() {
       <article className="dashboard__center">
         <div className="dashboard__row">
           <div className="dashboard__row-top--left">
-            <button onClick={handleOpen}>Open Finish Modal</button>
-            <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
+            <GameWindow isCounting={isCounting} selectedLevel={selectedLevel}/>
           </div>
           <div className="dashboard__row-top--right">
             <div className="dashboard__row-player">
@@ -143,6 +142,8 @@ export default function Dashboard() {
           <div className="dashboard__row-quest--right">
             <div className="dashboard__row-quest--container">
               <p className="dashboard__row-quest--title">Daily Quests</p>
+              <button onClick={handleOpen}>Open Finish Modal</button>
+            <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
               <ul className="dashboard__dailyquest-list">
                 <li className="dashboard__dailyquest-item">Item</li>
               </ul>
