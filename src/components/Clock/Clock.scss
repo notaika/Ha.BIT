@@ -1,0 +1,23 @@
+.dashboard .clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__time {
+        font-size: 70px;
+        border: 3px solid #fcfcfc;
+        padding: 3rem;
+        color: rgb(239, 239, 239);
+        margin-bottom: 2rem;
+    }
+    &__quote {
+        
+        &-game {
+            text-align: right;
+            font-style: italic;
+            font-size: 12px;
+        }
+    }
+}

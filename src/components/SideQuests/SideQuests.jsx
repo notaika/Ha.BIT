@@ -64,6 +64,7 @@ export default function SideQuests() {
   }
 
   const toggleComplete = (id) => {
+    // update the api on the backend for persistence
     setTasks(tasks.map(task => {
         if (task.id === id) {
             return {...task, isCompleted: !task.isCompleted};

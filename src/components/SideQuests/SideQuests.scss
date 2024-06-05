@@ -1,4 +1,7 @@
 .dashboard .tasks {
+    &__add {
+        width: 100%;
+    }
     &__task {
         &-input {
             color: black;
@@ -9,11 +12,13 @@
             background: none;
             border: none;
             margin-left: 8px;
+            width: 5%;
         }
         &-icon {
             height: 24px;
             position: relative;
             top: 5px;
+            left: 70%;
         }
         &-label {
             margin-left: 8px;

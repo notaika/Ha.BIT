@@ -4,7 +4,9 @@ import axios from "axios";
 import LevelTimer from "../../components/LevelTimer/LevelTimer";
 import GameWindow from "../../components/GameWindow/GameWindow";
 import SideQuests from "../../components/SideQuests/SideQuests";
+import DailyQuests from "../../components/DailyQuests/DailyQuests";
 import FinishModal from "../../components/FinishModal/FinishModal";
+import Clock from "../../components/Clock/Clock";
 import Shop from "../../components/Shop/Shop";
 import "./Dashboard.scss";
 
@@ -133,6 +135,8 @@ export default function Dashboard() {
                       Level {level.level}
                     </button>
                   ))}
+                  <button onClick={handleOpen}>Open Finish Modal</button>
+            <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
                 </div>
               </div>
             </div>
@@ -162,18 +166,17 @@ export default function Dashboard() {
           </div>
           <div className="dashboard__row-quest--right">
             <div className="dashboard__row-quest--container">
-              <p className="dashboard__row-quest--title">Daily Quests</p>
-              <button onClick={handleOpen}>Open Finish Modal</button>
-            <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
-              <ul className="dashboard__dailyquest-list">
-                <li className="dashboard__dailyquest-item">Item</li>
-              </ul>
+              <Clock />
             </div>
           </div>
         </div>
 
-        <div className="dashboard__row"></div>
-        <div className="dashboard__row"></div>
+        <div className="dashboard__row">
+          <div className="dashboard__row-bottom">
+          <p className="dashboard__row-quest--title">Daily Quests</p>
+              <DailyQuests user={user} />
+          </div>
+        </div>
       </article>
     </main>
   );
