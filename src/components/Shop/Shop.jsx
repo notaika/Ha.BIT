@@ -12,7 +12,7 @@ export default function Shop({ avatar, setAvatar, playerSprites, user, setUser, 
     const { id } = useParams();
 
     const patchCost = async (minusCoins) => {
-        const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/1/coins/subtract`, {
+        const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/${user.id}/coins/subtract`, {
             id: 1,
             minusCoins: minusCoins
         })

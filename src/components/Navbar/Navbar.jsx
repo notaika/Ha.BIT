@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import coin from '../../assets/logos/coin.gif'
 import './Navbar.scss'
 
-export default function Navbar() {
+export default function Navbar({ token, setToken }) {
   return (
     <div className="navbar">
         <NavLink to='/'><img src={coin} alt="Ha.BIT Logo - a coin" className="navbar__logo" /></NavLink>
@@ -12,7 +12,18 @@ export default function Navbar() {
             <NavLink to='/' className="navbar__links-item">About</NavLink>
             <NavLink to='/' className="navbar__links-item">Contact</NavLink>
             <NavLink to='/' className="navbar__links-item">Support</NavLink>
-            <NavLink to='/' className="navbar__links-item">Account</NavLink>
+            {token ? (<NavLink to='/' className="navbar__links-item" onClick={() => {
+                localStorage.removeItem("token");
+                setToken(null);
+              }}>
+                Logout</NavLink>) : (
+          <>
+              <NavLink to="/signup" className="navbar__links-item">Sign Up</NavLink>
+
+              <NavLink to="/login" className="navbar__links-item">Login</NavLink>
+
+          </>
+        )}
         </div>
     </div>
   )

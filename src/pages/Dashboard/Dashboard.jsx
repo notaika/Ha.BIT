@@ -10,7 +10,7 @@ import Clock from "../../components/Clock/Clock";
 import Shop from "../../components/Shop/Shop";
 import "./Dashboard.scss";
 
-export default function Dashboard() {
+export default function Dashboard({ token }) {
   const [user, setUser] = useState([]);
   const [levels, setLevels] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState(null);
@@ -22,16 +22,25 @@ export default function Dashboard() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/users/1`);
-      setUser(response.data);
+      const { data } = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/users/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      setUser(data);
     } catch (error) {
       console.log(`ERROR: Could not get user`, error);
     }
   };
 
   useEffect(() => {
-    getUser();
-  }, []);
+    if (token) {
+      getUser();
+    } else {
+      setUser(null);
+    }
+  }, [token]);
 
   const getLevels = async () => {
     try {
@@ -76,7 +85,7 @@ export default function Dashboard() {
   };
   
   const addCoins = async (addedCoins) => {
-    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/1/coins/add`, {
+    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/${user.id}/coins/add`, {
       id: 1,
       addedCoins: addedCoins
     })
@@ -86,7 +95,7 @@ export default function Dashboard() {
   }
 
   const addReputation = async (addedReputation) => {
-    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/1/reputation`, {
+    const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/${user.id}/reputation`, {
       id: 1,
       addedReputation: addedReputation
     })

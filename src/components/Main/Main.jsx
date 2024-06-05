@@ -2,10 +2,10 @@ import React from 'react'
 import Header from '../Header/Header'
 import './Main.scss'
 
-export default function Main() {
+export default function Main({ token }) {
   return (
     <div>
-      <Header />
+      <Header token={token}/>
     </div>
   )
 }
