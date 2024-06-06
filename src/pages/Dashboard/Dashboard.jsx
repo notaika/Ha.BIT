@@ -18,7 +18,6 @@ export default function Dashboard({ token }) {
   const [initialTime, setInitialTime] = useState(0);
   const [open, setOpen] = useState(false);
   const { id } = useParams();
-  let reputation = (user.reputation / 60);
 
   const getUser = async () => {
     try {
@@ -86,7 +85,7 @@ export default function Dashboard({ token }) {
   
   const addCoins = async (addedCoins) => {
     const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/${user.id}/coins/add`, {
-      id: 1,
+      id: user.id,
       addedCoins: addedCoins
     })
     setUser((currUser) => ({
@@ -96,7 +95,7 @@ export default function Dashboard({ token }) {
 
   const addReputation = async (addedReputation) => {
     const response = await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/users/${user.id}/reputation`, {
-      id: 1,
+      id: user.id,
       addedReputation: addedReputation
     })
     setUser((currUser) => ({
@@ -112,8 +111,8 @@ export default function Dashboard({ token }) {
       try {
           const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
           const spriteData = response.data;
-          setAvatar(spriteData.player_sprites[0]);
-          setPlayerSprites(response.data.player_sprites)
+          setAvatar(spriteData[0]);
+          setPlayerSprites(response.data)
       } catch (error) {
           console.log(`ERROR: Could not fetch sprite`, error);
       }
@@ -123,7 +122,7 @@ export default function Dashboard({ token }) {
 
   return (
     <main className="dashboard">
-      <article className="dashboard__center">
+      {user ? <article className="dashboard__center">
         <div className="dashboard__row">
           <div className="dashboard__row-top--left">
             <GameWindow isCounting={isCounting} selectedLevel={selectedLevel} avatar={avatar}/>
@@ -134,7 +133,7 @@ export default function Dashboard({ token }) {
                 <p className="dashboard__row-player-name">Welcome, {user.username}</p>
                 <p className="dashboard__row-player-status">CURRENTLY: {selectedLevel ? 'Deployed' : 'Idle'}</p>
                 <p className="dashboard__row-player-location">LOCATION: {selectedLevel ? selectedLevel.name : 'At the tavern'}</p>
-                <p className="dashboard__row-player-reputation">REPUTATION: {(reputation).toFixed(2)} hours</p>
+                <p className="dashboard__row-player-reputation">REPUTATION: {(user.reputation / 60).toFixed(2)} hours</p>
               </div>
               <div className="dashboard__row-player--right">
                 <p className="dashboard__row-player-level">Select an expedition:</p>
@@ -161,7 +160,7 @@ export default function Dashboard({ token }) {
                 />
               )}
               {selectedLevel === null && (
-                <Shop avatar={avatar} setAvatar={setAvatar} playerSprites={playerSprites} user={user} setUser={setUser} setPlayerSprites={setPlayerSprites} />
+                <Shop avatar={avatar} setAvatar={setAvatar} playerSprites={playerSprites} user={user} setUser={setUser} setPlayerSprites={setPlayerSprites} token={token}/>
               )}
             </div>
           </div>
@@ -170,7 +169,7 @@ export default function Dashboard({ token }) {
         <div className="dashboard__row">
           <div className="dashboard__row-quest--left">
             <div className="dashboard__row-quest--container">
-              <SideQuests />
+              <SideQuests user={user} token={token}/>
             </div>
           </div>
           <div className="dashboard__row-quest--right">
@@ -186,7 +185,7 @@ export default function Dashboard({ token }) {
               <DailyQuests user={user} />
           </div>
         </div>
-      </article>
+      </article> : (<p className="alerts">Please Sign Up or Login :D</p>)}
     </main>
   );
 }

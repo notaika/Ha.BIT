@@ -5,17 +5,18 @@ import quillIcon from "../../assets/images/quill.png";
 import scrollIcon from "../../assets/images/scroll.png"
 import "./SideQuests.scss";
 
-export default function SideQuests() {
+export default function SideQuests({ user, token }) {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
-  const [userId, setUserId] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
 
   const getTasks = async () => {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_LOCALHOST}/api/tasks`
-      );
+      const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/tasks`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
       setTasks(response.data);
     } catch (error) {
       console.error(`ERROR: Could not get tasks`, error);
@@ -23,13 +24,15 @@ export default function SideQuests() {
   };
 
   useEffect(() => {
-    getTasks();
-  }, []);
+    if (token) {
+      getTasks();
+    }
+  }, [token]);
 
   const addTask = async () => {
     try {
         const response = await axios.post(`${import.meta.env.VITE_LOCALHOST}/api/tasks`, {
-                user_id: userId,
+                user_id: user.id,
                 task: newTask,
                 isCompleted: isCompleted
         })
