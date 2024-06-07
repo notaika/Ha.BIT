@@ -27,7 +27,6 @@ const Clock = () => {
         try {
             const response = await axios.get('https://cors-anywhere.herokuapp.com/https://ultima.rest/api/random');
             setQuote(response.data)
-            console.log(quote)
         } catch (error) {
             console.log(`ERROR: Could not fetch quote`, error);
         }

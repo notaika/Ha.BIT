@@ -107,19 +107,6 @@ export default function Dashboard({ token }) {
   const [avatar, setAvatar] = useState([]);
   const [monster, setMonster] = useState([]);
 
-  // const getSprites = async () => {
-  //     try {
-  //         const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
-  //         const spriteData = response.data;
-  //         // setAvatar(spriteData[0]);
-  //         // setPlayerSprites(response.data)
-  //     } catch (error) {
-  //         console.log(`ERROR: Could not fetch sprite`, error);
-  //     }
-  // }
-
-  // useEffect(() => {getSprites();}, [])
-
   return (
     <main className="dashboard">
       {user ? <article className="dashboard__center">

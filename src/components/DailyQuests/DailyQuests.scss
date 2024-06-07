@@ -31,8 +31,12 @@
                 margin-left: 16px;
             }
             &-complete {
-                background-color: rgb(113, 190, 113);
+                background-color: rgb(190, 113, 113);
                 padding: 0.1rem 0.5rem;
+
+                &-true {
+                    background-color: rgb(113, 190, 113);
+                }
             }
         }
     }

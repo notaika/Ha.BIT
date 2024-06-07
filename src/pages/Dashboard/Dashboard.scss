@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    width: 1088px;
 
     &__center {
         background-color: rgb(49, 49, 49);
@@ -92,6 +92,8 @@
                 overflow-y: scroll;
                 width: 100%;
                 height: 100%;
+                position: relative;
+                z-index: 15;
 
                 &::-webkit-scrollbar {
                     width: 5px;
