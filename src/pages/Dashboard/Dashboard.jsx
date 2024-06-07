@@ -107,18 +107,18 @@ export default function Dashboard({ token }) {
   const [avatar, setAvatar] = useState([]);
   const [monster, setMonster] = useState([]);
 
-  const getSprites = async () => {
-      try {
-          const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
-          const spriteData = response.data;
-          setAvatar(spriteData[0]);
-          setPlayerSprites(response.data)
-      } catch (error) {
-          console.log(`ERROR: Could not fetch sprite`, error);
-      }
-  }
+  // const getSprites = async () => {
+  //     try {
+  //         const response = await axios.get(`${import.meta.env.VITE_LOCALHOST}/api/sprites`);
+  //         const spriteData = response.data;
+  //         // setAvatar(spriteData[0]);
+  //         // setPlayerSprites(response.data)
+  //     } catch (error) {
+  //         console.log(`ERROR: Could not fetch sprite`, error);
+  //     }
+  // }
 
-  useEffect(() => {getSprites();}, [])
+  // useEffect(() => {getSprites();}, [])
 
   return (
     <main className="dashboard">
@@ -182,7 +182,7 @@ export default function Dashboard({ token }) {
         <div className="dashboard__row">
           <div className="dashboard__row-bottom">
           <p className="dashboard__row-quest--title">Daily Quests</p>
-              <DailyQuests user={user} />
+              <DailyQuests user={user} token={token} />
           </div>
         </div>
       </article> : (<p className="alerts">Please Sign Up or Login :D</p>)}

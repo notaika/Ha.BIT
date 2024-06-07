@@ -1,6 +1,8 @@
-.dailies {
-    &__date {
-
+.dashboard .dailies {
+    &__top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
     &__habits {
         margin: 1rem 0;
@@ -11,6 +13,48 @@
             padding: 0.5rem;
             border: 1px solid #fcfcfc;
             margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
         }
+        &-actions {
+            display: flex;
+
+            &-delete {
+                margin-left: 16px;
+                background: none;
+                width: 24px;
+                text-align: center;
+            }
+            &-track {
+                background-color: rgb(103, 148, 210);
+                padding: 0.1rem 0.5rem;
+                margin-left: 16px;
+            }
+            &-complete {
+                background-color: rgb(113, 190, 113);
+                padding: 0.1rem 0.5rem;
+            }
+        }
+    }
+    &__form {
+        &-habit {
+            color: black;
+            padding: 2px;
+            width: 30%;
+            position: relative;
+            z-index: 15;
+        }
+        &-submit {
+            background: none;
+            border: none;
+
+            &-icon {
+                height: 24px;
+                position: relative;
+                top: 5px;
+                left: 70%;
+            }
+        }
+        
     }
 }
