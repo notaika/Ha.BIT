@@ -13,10 +13,6 @@ export default function DailyQuests({ token, user }) {
   const [completed, setCompleted] = useState(false);
   const [openTracker, setOpenTracker] = useState(false);
   const handleClose = () => setOpenTracker(false);
-  // Need to do:
-  // - Delete HABIT API call - done
-  // - Button that changes the state of habit from false to true in HABIT table ??
-  // - completed habits table call and reflecting changes on front end
 
   const getHabits = async () => {
     try {
@@ -69,16 +65,12 @@ export default function DailyQuests({ token, user }) {
             type: 'int',
             color: 'shibafu'
           };
-
-          console.log('Pixela Graph Data:', graphData)
       
           const responsePixela = await axios.post(
             `https://pixe.la/v1/users/${import.meta.env.VITE_PIXELA_USERNAME}/graphs`,
             graphData,
             { headers: { 'X-USER-TOKEN': import.meta.env.VITE_PIXELA_TOKEN } }
           );
-          
-          console.log('Pixela Response:', responsePixela.data);
       }
     } catch (error) {
       console.log(`ERROR: Unable to post habit`, error);
@@ -127,6 +119,7 @@ export default function DailyQuests({ token, user }) {
                 quantity: "1"
             }
 
+            // Pixela integration
             await axios.post(`https://pixe.la/v1/users/${import.meta.env.VITE_PIXELA_USERNAME}/graphs/habitwebapp-${habitId}`, pixelInput, {
                 headers: { 'X-USER-TOKEN': import.meta.env.VITE_PIXELA_TOKEN }
             })
@@ -147,7 +140,6 @@ export default function DailyQuests({ token, user }) {
             }
         })
         const completedLogsToday = response.data;
-        console.log(today, completedLogsToday);
 
         const completedStatus = {};
         completedLogsToday.forEach((log) => {

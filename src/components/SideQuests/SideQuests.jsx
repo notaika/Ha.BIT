@@ -66,14 +66,25 @@ export default function SideQuests({ user, token }) {
     deleteTask(id);
   }
 
-  const toggleComplete = (id) => {
-    // update the api on the backend for persistence
-    setTasks(tasks.map(task => {
+  const toggleComplete = async (id, isCompleted) => {
+    try {
+      await axios.patch(`${import.meta.env.VITE_LOCALHOST}/api/tasks/${id}`, {
+        isCompleted: !isCompleted
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      setTasks(tasks.map(task => {
         if (task.id === id) {
             return {...task, isCompleted: !task.isCompleted};
         }
         return task;
-    }))
+      }));
+    } catch (error) {
+      console.log(`ERROR: Could not update task status`, error);
+    }
   }
 
   return (
@@ -83,13 +94,18 @@ export default function SideQuests({ user, token }) {
         {tasks.map((task) => (
           <div className="tasks__item" key={task.id}>
             <div className="tasks__item-content">
-                <input type="checkbox" className="tasks__task" id={task.id} onChange={() => toggleComplete(task.id)}/>
+                <input 
+                  type="checkbox" 
+                  className="tasks__task" 
+                  id={task.id} 
+                  checked={task.isCompleted}
+                  onChange={() => toggleComplete(task.id, task.isCompleted)}
+                />
                 <label htmlFor={task.id} className={`tasks__task-label ${task.isCompleted ? 'tasks__task-label-completed' : ''}`}>
                   {task.task}
                 </label>
             </div>
                 <span className="tasks__item-x" onClick={() => handleDeleteTask(task.id)}>x</span>
-
           </div>
         ))}
 
