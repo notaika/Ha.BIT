@@ -1,5 +1,5 @@
 .support {
-    width: 1920px;
+    width: 120rem;
     margin-bottom: 1rem;
 
     &__hero {
@@ -10,13 +10,13 @@
         background-image: url('../../assets/images/dashboard-bg.png');
         background-size: cover;
         background-position: center;
-        height: 300px;
+        height: 18.75rem;
         margin-top: 2rem;
         width: 100%;
 
         &-title {
             color: white;
-            font-size: 36px;
+            font-size: 2.25rem;
         }
         &-form {
             margin-top: 2rem;
@@ -30,14 +30,14 @@
                 border: none;
 
                 &:hover {
-                    cursor: pointer;
+                    transform: scale(1.05);
                 }
             }
             &-img {
-                height: 38px;
+                height: 2.375rem;
                 position: relative;
-                top: 14px;
-                left: 14px;
+                top: 0.875rem;
+                left: 0.875rem;
             }
         }
     }
@@ -58,21 +58,15 @@
         flex-direction: column;
 
         &-title {
-            font-size: 28px;
+            font-size: 1.75rem;
             margin-bottom: 1rem;
-        }
-        &-container {
-
-        }
-        &-list {
-
         }
         &-item {
             list-style-type: none;
 
             &-title {
                 margin: 1rem 0;
-                font-size: 20px;
+                font-size: 1.25rem;
             }
 
         }

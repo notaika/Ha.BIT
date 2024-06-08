@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     width: 400;
     background-color: rgb(72, 72, 72);
-    border: 2px solid #000;
+    border: 0.125rem solid #000;
     box-shadow: 24;
     padding: 2rem;
 
@@ -15,29 +15,36 @@
     &__description {
         color: #fcfcfc;
         padding: 2rem 0;
-        font-size: 18px;
+        font-size: 1.125rem;
     }
     &__confirm {
         padding: 0.5rem 1rem;
         background-color: rgb(72, 135, 72);
         color: white;
 
+        &:hover {
+            background-color: rgb(40, 76, 40);
+        }
         &-icon {
-            height: 18px;
+            height: 1.125rem;
             position: relative;
-            top: 2px;
-            margin-left: 4px;
+            top: 0.125rem;
+            margin-left: 0.25rem;
         }
     }
     &__cancel {
         @extend .confirm__confirm;
         background-color: rgb(216, 73, 73);
         color: white;
-        margin-left: 24px;
+        margin-left: 1.5rem;
+
+        &:hover {
+            background-color: rgb(149, 50, 50);
+        }
     }
     &__coins {
-        height: 22px;
+        height: 1.375rem;
         position: relative;
-        top: 4px;
+        top: 0.25rem;
     }
 }

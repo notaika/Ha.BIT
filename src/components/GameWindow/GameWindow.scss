@@ -1,8 +1,8 @@
 @use '../../styles/keyframes';
 
 .game {
-    background-position-y: -90px;
-    background-position-x: -140px;
+    background-position-y: -5.625rem;
+    background-position-x: -8.75rem;
     background-size: 230%;
     height: 100%;
 
@@ -11,15 +11,15 @@
         position: relative;
 
         &-player {
-            width: 100px; /*single frame width*/
-            height: 100px; /* single frame height */
+            width: 6.25rem; 
+            height: 6.25rem; 
             background-repeat: no-repeat;
             animation: keyframes.$idle 1s steps(6) infinite;
-            transform: scale(4); /* scale img of sprite */
-            image-rendering: pixelated; /* make sure pixel resolution doesn't lose quality*/
+            transform: scale(4); 
+            image-rendering: pixelated; 
             position: relative;
-            top: 155px;
-            right: 0px;
+            top: 9.6875rem;
+            right: 0rem;
             z-index: 2;
 
             &-attack {
@@ -29,8 +29,8 @@
         }
         &-monster {
             @extend .game__sprites-player;
-            top: 145px;
-            left: 40px;
+            top: 9.0625rem;
+            left: 2.5rem;
             z-index: 1;
             transform: scale(5) scaleX(-1);
 

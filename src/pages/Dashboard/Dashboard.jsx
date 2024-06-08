@@ -60,7 +60,10 @@ export default function Dashboard({ token }) {
   }
 
   const handleLevelSelect = (level) => {
-    if (!isCounting) {
+    if (avatar.length === 0) {
+      alert('Please select an adventurer')
+    }
+    if (!isCounting && avatar.length !== 0) {
       setInitialTime(level.time);
       setSelectedLevel(level);
     }
@@ -168,7 +171,6 @@ export default function Dashboard({ token }) {
 
         <div className="dashboard__row">
           <div className="dashboard__row-bottom">
-          <p className="dashboard__row-quest--title">Daily Quests</p>
               <DailyQuests user={user} token={token} open={open} setOpen={setOpen} addCoins={addCoins}/>
           </div>
         </div>

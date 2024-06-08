@@ -24,3 +24,8 @@ html {
   position: relative;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+}
+}

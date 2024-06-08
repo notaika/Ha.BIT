@@ -168,6 +168,7 @@ export default function DailyQuests({ token, user, addCoins }) {
     <section className="dailies">
     <TrackHabitModal openTracker={openTracker} handleClose={handleClose} graphUrl={graphUrl}/>
       <div className="dailies__top">
+        <h2 className="dailies__title">Daily Quests <img src={scrollIcon} alt="A scroll icon" className="dailies__title-icon" /></h2>
         <h3 className="dailies__date">Today's Date: {date}</h3>
       </div>
       <div className="dailies__habits">

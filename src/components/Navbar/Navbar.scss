@@ -8,21 +8,25 @@
     background-color: white;
     width:100%;
     max-width: 1920px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0rem 0.8125rem 1.6875rem -0.3125rem, rgba(0, 0, 0, 0.3) 0rem 0.5rem 1rem -0.5rem;
 
     &__logo {
-        height: 40px;
-        margin: 10px 2rem;
+        height: 2.5rem;
+        margin: 0.625rem 2rem;
     }
 
     &__links {
-        padding: 20px 2rem;
+        padding: 1.25rem 2rem;
+
         &-item {
             font-family: typography.$font-pixel;
             font-weight: 500;
             text-decoration: none;
             margin-left: 2rem;
-            
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

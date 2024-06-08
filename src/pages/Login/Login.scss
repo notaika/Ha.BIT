@@ -8,9 +8,9 @@
     background-image: url('../../assets/images/background.png');
     background-repeat: repeat-x;
     background-size: cover;
-    background-position-y: 60px;
+    background-position-y: 3.75rem;
     padding-bottom: 10rem;
-    max-width: 1920px;
+    max-width: 120rem;
     min-height: 100vh;
 
     &__container {
@@ -18,7 +18,7 @@
         padding: 5rem 0;
         width: 80%;
         margin: 0 auto;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem;
     }
     &__title {
         color: white;
@@ -60,12 +60,12 @@
         justify-content: center;
 
         &-text {
-            font-size: 13px;
+            font-size: 0.8125rem;
         }
         &-button {
             color: blue;
-            margin-left: 4px;
-            font-size: 13px;
+            margin-left: 0.25rem;
+            font-size: 0.8125rem;
             }
     }
 }

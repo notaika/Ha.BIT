@@ -17,15 +17,27 @@
     }
     &__stop {
         background-color: rgb(146, 2, 2);
-        padding: 0.25rem;
+        padding: 0.25rem 1rem;
+
+        &:hover {
+            background-color: rgb(88, 0, 0)
+        }   
     }
     &__start {
+        @extend .timer__stop;
         background-color: rgb(9, 123, 3);
-        padding: 0.25rem;
+
+        &:hover {
+            background-color: rgb(3, 69, 0);
+        }
     }
     &__cancel {
+        @extend .timer__stop;
         background-color: rgb(70, 70, 70);
-        padding: 0.25rem;
+
+        &:hover {
+            background-color: rgb(38, 38, 38);
+        }
     }
     
 }

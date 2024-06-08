@@ -6,7 +6,7 @@
         justify-content: space-between;
     }
     &__wallet {
-        padding: 0 8px;
+        padding: 0 0.5rem;
     }
     &__container {
         display: flex;
@@ -20,24 +20,28 @@
         margin: 0 auto;
     }
     &__buy {
-        width: 100px; /*single frame width*/
-        height: 100px; /* single frame height */
+        width: 6.25rem;
+        height: 6.25rem; 
         animation: keyframes.$idle 1s steps(6) infinite;
         background-repeat: no-repeat;
-        transform: scale(2); /* scale img of sprite */
-        image-rendering: pixelated; /* make sure pixel resolution doesn't lose quality*/
+        transform: scale(2);
+        image-rendering: pixelated; 
         position: relative;
-        top: 0px;
-        right: 0px;
         z-index: 2;
+
+        &:hover {
+            transform: scale(2.5);
+            cursor: pointer;
+        }
     }
     &__title {
-        padding: 8px;
+        padding: 0.5rem;
+        font-size: 1rem;
     }
     &__description {
         margin: 0 auto;
         position: relative;
-        bottom: 24px;
+        bottom: 1.5rem;
 
         &-deny {
             color: red;
