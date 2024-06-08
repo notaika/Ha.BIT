@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
-import axios from 'axios';
 import coinIcon from '../../assets/logos/coin.webp';
 import "./ShopModal.scss"
-
 
 export default function ShopModal({ open, setOpen, currentSprite, handleConfirmPurchase }) {
     

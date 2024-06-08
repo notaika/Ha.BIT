@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import quillIcon from "../../assets/images/quill.png";
 import scrollIcon from "../../assets/images/scroll.png";
+import TrackHabitModal from "../TrackHabitModal/TrackHabitModal";
 import "./DailyQuests.scss";
 
 export default function DailyQuests({ token, user }) {
@@ -11,7 +11,8 @@ export default function DailyQuests({ token, user }) {
   const [habits, setHabits] = useState([]);
   const [habitInput, setHabitInput] = useState("");
   const [completed, setCompleted] = useState(false);
-
+  const [openTracker, setOpenTracker] = useState(false);
+  const handleClose = () => setOpenTracker(false);
   // Need to do:
   // - Delete HABIT API call - done
   // - Button that changes the state of habit from false to true in HABIT table ??
@@ -146,6 +147,7 @@ export default function DailyQuests({ token, user }) {
             }
         })
         const completedLogsToday = response.data;
+        console.log(today, completedLogsToday);
 
         const completedStatus = {};
         completedLogsToday.forEach((log) => {
@@ -153,6 +155,7 @@ export default function DailyQuests({ token, user }) {
                 completedStatus[log.habits_id] = true;
             } 
         });
+        
         setCompleted(completedStatus);
     } catch (error) {
         console.log(error)
@@ -161,8 +164,16 @@ export default function DailyQuests({ token, user }) {
 
   useEffect(() => {getCompletedHabitLogs();}, [token])
 
+  const [graphUrl, setGraphUrl] = useState('Habit Tracker URL not found')
+
+  const handleOpenTracker = (habitId) => {
+    setOpenTracker(true);
+    setGraphUrl(`https://pixe.la/v1/users/${import.meta.env.VITE_PIXELA_USERNAME}/graphs/habitwebapp-${habitId}.html`)
+  }
+
   return (
     <section className="dailies">
+    <TrackHabitModal openTracker={openTracker} handleClose={handleClose} graphUrl={graphUrl}/>
       <div className="dailies__top">
         <h3 className="dailies__date">Today's Date: {date}</h3>
       </div>
@@ -177,7 +188,7 @@ export default function DailyQuests({ token, user }) {
                 >
                     {completed[habit.id] ? 'Completed' : 'Mark as completed'}
                 </button>
-                <button className="dailies__habits-actions-track">Track Habit</button>
+                <button className="dailies__habits-actions-track" onClick={() => handleOpenTracker(habit.id)}>Track Habit</button>
                 <button className="dailies__habits-actions-delete" onClick={() => deleteHabit(habit.id)}>x</button>
             </div>
           </div>

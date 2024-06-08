@@ -4,10 +4,6 @@
 }
 
 .dashboard {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 40px;
-    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,7 +14,7 @@
         background-color: rgb(49, 49, 49);
         min-height: 75vh;
         width: 85vw;
-        margin-top: 10rem;
+        margin-top: 7rem;
         box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     }
     &__row {

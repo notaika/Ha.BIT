@@ -169,7 +169,7 @@ export default function Dashboard({ token }) {
         <div className="dashboard__row">
           <div className="dashboard__row-bottom">
           <p className="dashboard__row-quest--title">Daily Quests</p>
-              <DailyQuests user={user} token={token} />
+              <DailyQuests user={user} token={token} open={open} setOpen={setOpen} />
           </div>
         </div>
       </article> : (<p className="alerts">Please Sign Up or Login :D</p>)}
