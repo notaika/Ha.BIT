@@ -4,17 +4,20 @@
 }
 
 .dashboard {
+    background-image: url('../../assets/images/dashboard-bg.png');
+    background-size: cover;
+    background-position: center;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1088px;
+    min-height: 100vh;
+    max-width: 1920px;
 
     &__center {
         background-color: rgb(49, 49, 49);
-        min-height: 75vh;
-        width: 85vw;
-        margin-top: 7rem;
+        width: 1088px;
+        margin: 7rem 0;
         box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     }
     &__row {

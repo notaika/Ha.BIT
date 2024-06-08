@@ -6,7 +6,7 @@ import scrollIcon from "../../assets/images/scroll.png";
 import TrackHabitModal from "../TrackHabitModal/TrackHabitModal";
 import "./DailyQuests.scss";
 
-export default function DailyQuests({ token, user }) {
+export default function DailyQuests({ token, user, addCoins }) {
   const date = new Date().toISOString().split("T")[0];
   const [habits, setHabits] = useState([]);
   const [habitInput, setHabitInput] = useState("");
@@ -107,6 +107,7 @@ export default function DailyQuests({ token, user }) {
                 Authorization: `Bearer ${token}`
             }
         })
+        addCoins(1);
         setCompleted(prevCompleted => ({
             ...prevCompleted,
             [habitId]: true

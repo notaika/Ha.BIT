@@ -1,0 +1,20 @@
+.footer {
+    position: absolute;
+    bottom: 0px;
+    padding: 1rem;
+
+    &__copyright {
+        color: white;
+
+        &-black {
+            color: black;
+        }
+        &-link {
+            color: rgb(170, 214, 255);
+
+            &-black {
+                color: blue;
+            }
+        }
+    }
+}

@@ -9,9 +9,8 @@ export default function Navbar({ token, setToken }) {
         <NavLink to='/'><img src={coin} alt="Ha.BIT Logo - a coin" className="navbar__logo" /></NavLink>
         <div className="navbar__links">
             <NavLink to='/' className="navbar__links-item">Home</NavLink>
-            <NavLink to='/' className="navbar__links-item">About</NavLink>
-            <NavLink to='/' className="navbar__links-item">Contact</NavLink>
-            <NavLink to='/' className="navbar__links-item">Support</NavLink>
+            <NavLink to='https://github.com/notaika/Ha.BIT' className="navbar__links-item">About</NavLink>
+            <NavLink to='/support' className="navbar__links-item">Support</NavLink>
             {token ? 
             (<>
             <NavLink to='/dashboard' className="navbar__links-item">Dashboard</NavLink>
