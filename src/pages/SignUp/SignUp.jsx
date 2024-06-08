@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignUp.scss';
 
@@ -64,6 +65,11 @@ export default function SignUp() {
                 </form>
                 {signedup && <div className="signup__success">Sign up successful, please log in</div>}
                 {error && <div className="signup__error">{error}</div>}
+
+                <div className="signup__login">
+                    <p className="signup__login-text">Already have an account?</p>
+                    <Link to='/login' className="signup__login-button">Login</Link>
+                </div>
             </div>
         </main>
     );

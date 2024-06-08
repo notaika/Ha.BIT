@@ -131,6 +131,12 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         
+        &-img {
+            visibility: hidden;
+            width: 170px;
+            margin-left: 2.7rem;
+            margin-bottom: 1rem;
+        }
         &-item {
             display: flex;
             flex-direction: column;
@@ -152,7 +158,8 @@
                 transform: scale(1.05);
             }
             &:hover .features__cards-title,
-            &:hover .features__cards-description {
+            &:hover .features__cards-description,
+            &:hover .features__cards-img {
                 visibility: visible;
                 opacity: 1;
             }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.scss";
 
@@ -72,6 +72,11 @@ export default function Login({ setToken }) {
           </button>
           {error && <div className="login__error">{error}</div>}
         </form>
+
+        <div className="login__signup">
+          <p className="login__signup-text">Don't have an account?</p>
+          <Link to='/signup' className="login__signup-button">Sign Up</Link>
+        </div>
       </div>
     </main>
   );

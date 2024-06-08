@@ -12,16 +12,16 @@ export default function Navbar({ token, setToken }) {
             <NavLink to='/' className="navbar__links-item">About</NavLink>
             <NavLink to='/' className="navbar__links-item">Contact</NavLink>
             <NavLink to='/' className="navbar__links-item">Support</NavLink>
-            {token ? (<NavLink to='/' className="navbar__links-item" onClick={() => {
+            {token ? 
+            (<>
+            <NavLink to='/dashboard' className="navbar__links-item">Dashboard</NavLink>
+            <NavLink to='/' className="navbar__links-item" onClick={() => {
                 localStorage.removeItem("token");
                 setToken(null);
-              }}>
-                Logout</NavLink>) : (
+              }}>Logout</NavLink>
+            </>) : (
           <>
-              <NavLink to="/signup" className="navbar__links-item">Sign Up</NavLink>
-
               <NavLink to="/login" className="navbar__links-item">Login</NavLink>
-
           </>
         )}
         </div>

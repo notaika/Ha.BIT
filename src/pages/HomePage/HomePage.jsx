@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import heatmap from "../../assets/images/heatmap.png";
+import motivate from "../../assets/images/motivate.png";
+import coin from "../../assets/logos/coin.webp";
 import "./HomePage.scss";
 
 export default function HomePage({ token }) {
@@ -13,8 +16,8 @@ export default function HomePage({ token }) {
           "Level Up Your Life, One Habit at a Time"
         </h2>
         <div className="hero__buttons">
-          <Link to={ token ? '/dashboard' : '/login'} className="hero__btn">
-            Begin Your Adventure
+          <Link to={ token ? '/dashboard' : '/signup'} className="hero__btn">
+          { token ? 'Begin Your Adventure' : 'Join the Roster'}
           </Link>
         </div>
       </div>
@@ -35,16 +38,19 @@ export default function HomePage({ token }) {
         <h1 className="features__title">Features</h1>
         <div className="features__cards">
             <div className="features__cards-item">
-                <h2 className="features__cards-title">Track Your Progress</h2>
-                <p className="features__cards-description">Engage in brain-training exercises and activities designed to boost your cognitive skills. From memory games to problem-solving challenges, Ha.BIT helps you keep your mind sharp and focused.</p>
+                <img src={heatmap} alt="A heat map to track progress" className="features__cards-img" />
+                <h2 className="features__cards-title">Track Progress</h2>
+                <p className="features__cards-description">Easily monitor your productivity with detailed insights and visualizations that help you stay on top of your goals. Reflect on your achievements and identify areas for improvement to keep advancing.</p>
             </div>
             <div className="features__cards-item">
+                <img src={coin} alt="A spinning coin" className="features__cards-img" />
                 <h2 className="features__cards-title">Earn Rewards</h2>
                 <p className="features__cards-description">Stay motivated by earning rewards for your achievements. Complete tasks and level up your character, unlocking new features and in-game items as you progress.</p>
             </div>
             <div className="features__cards-item">
-                <h2 className="features__cards-title">Insightful Analytics</h2>
-                <p className="features__cards-description">Gain valuable insights into your habits and productivity patterns. Use detailed reports and statistics to identify areas for improvement and celebrate your successes.</p>
+                <img src={motivate} alt="A pixel human with a thumbs up" className="features__cards-img" />
+                <h2 className="features__cards-title">Stay Motivated</h2>
+                <p className="features__cards-description">Keep your motivation high with engaging features that make productivity fun and rewarding. Set personal goals, track your habits, and enjoy the journey as you reach new levels of success.</p>
             </div>
         </div>
     </section>
