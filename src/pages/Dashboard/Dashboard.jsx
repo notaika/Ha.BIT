@@ -17,7 +17,8 @@ export default function Dashboard({ token }) {
   const [isCounting, setIsCounting] = useState(false);
   const [initialTime, setInitialTime] = useState(0);
   const [open, setOpen] = useState(false);
-  const { id } = useParams();
+  const [playerSprites, setPlayerSprites] = useState([]);
+  const [avatar, setAvatar] = useState([]);
 
   const getUser = async () => {
     try {
@@ -106,10 +107,6 @@ export default function Dashboard({ token }) {
     }))
   }
 
-  const [playerSprites, setPlayerSprites] = useState([]);
-  const [avatar, setAvatar] = useState([]);
-  const [monster, setMonster] = useState([]);
-
   return (
     <main className="dashboard">
       {user ? <article className="dashboard__center">
@@ -133,7 +130,6 @@ export default function Dashboard({ token }) {
                       Level {level.level}
                     </button>
                   ))}
-                  <button onClick={handleOpen}>Open Finish Modal</button>
             <FinishModal open={open} handleClose={handleClose} selectedLevel={selectedLevel} cancelTimer={cancelTimer} addCoins={addCoins}/>
                 </div>
               </div>
