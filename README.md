@@ -36,7 +36,7 @@ Many people struggle with productivity and task management due to a lack of moti
 - Login Page: A login page.
 
 # Installation
-IMPORTANT: This is the front-end ONLY. For the backend API/server, please navigate to: https://github.com/notaika/Ha.BIT-API
+IMPORTANT: This is the frontend ONLY. For the backend API/server, please navigate to: https://github.com/notaika/Ha.BIT-API
 
 On your terminal, run:
 1. `npm install` 
@@ -60,6 +60,8 @@ In Postman or your preferred API platform, please follow the instructions below:
     <i> For more detailed explanation on the pixel.a API and functionality, please refer to: https://docs.pixe.la/ & https://help.pixe.la/en </i>
 
 3. Click on this link: https://cors-anywhere.herokuapp.com/corsdemo and please click on "Request temporary access to the demo server"
+
+Another side-note: This app was only made for desktop view. For the best user experience please use between 1280px and 1920px.
 
 ## Usage Instructions
 1. ### Sign Up + Login
@@ -110,18 +112,11 @@ In Postman or your preferred API platform, please follow the instructions below:
 By following these detailed instructions, you will be able to make the most out of Ha.BIT, ensuring an organized, productive, and enjoyable experience.
 # Implementation
 ## Tech Stack
-### Front-End:
+### Frontend:
 - HTML
 - CSS (Sass)
 - Axios
-
-### Back-End:
-- Javascript
 - React.js
-- Express
-- Node.js
-- MySQL + Knex.js
-- JWT/bycryptjs for authentication
 
 ## APIs
 - Random Game Quotes API
